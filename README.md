@@ -6,3 +6,7 @@ Output any any image into ascii characters!
 2. Run `python convert.py` or `python3 convert.py` depending on your python installation.
 
 Note: The python pillow library is required for this script to run.
+
+### Example
+<img src="sample.png" width="100%">
+<img src="example.png" width="100%">
