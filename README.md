@@ -1,4 +1,4 @@
-# ascii_art v1.1
+# ASCII IMAGE CONVERTER v1.2
 ### Usage
 Output any any image into ascii characters!
 
