@@ -9,4 +9,4 @@ Note: The python pillow library is required for this script to run.
 
 ### Example
 <img src="sample.png" width="100%">
-<img src="example.png" width="100%">
+<img src="image.png" width="100%">
