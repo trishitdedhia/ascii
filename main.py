@@ -1,5 +1,6 @@
 from PIL import Image
 import math
+import sys
 
 #greyscale to ascii index
 #ascii_string = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1[]?-_+~<>i!lI;:,^`'. "
@@ -8,7 +9,7 @@ ascii_string = " .:-=+*#%@"
 index = [*ascii_string]
 
 #fetch image and downsize
-img = Image.open('./image.png')
+img = Image.open(sys.argv[1])
 width , height = img.size
 ratio = height / width
 
@@ -41,7 +42,5 @@ for item in data:
 #Print each pixel as an ascii character
 for x in ascii:
     print(f'{x}', end="")
-
-
 
     
