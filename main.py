@@ -9,7 +9,7 @@ ascii_string = " .:-=+*#%@"
 index = [*ascii_string]
 
 #fetch image and downsize
-img = Image.open(sys.argv[1])
+img = Image.open(sys.argv[2])
 width , height = img.size
 ratio = height / width
 
