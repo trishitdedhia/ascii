@@ -4,7 +4,8 @@ import sys
 import os
 
 #Set number parameters
-args = len(sys.argv) 
+args = len(sys.argv)
+#print(f'Total args = {args}')
 
 #Default parameters
 size = 150
@@ -14,6 +15,8 @@ ascii_string = " .:-=+*#%@"
 ready = False
 i=1
 while i < args:
+
+    #print(f'{sys.argv[i]}, {i}')
 
     # --width or -w
     if sys.argv[i] == "-w" or sys.argv[i] == "--width":
@@ -41,7 +44,7 @@ while i < args:
             exit(1)
 
     #CHECK FOR THE LAST ARG
-    elif i != args - 1:
+    elif i == args - 1:
 
         # HELP
         if sys.argv[i] == "--help" or sys.argv[i] == "-h":
@@ -52,8 +55,7 @@ while i < args:
             ready = True
             break
         else:
-            print("Invalid syntax for passing arguments.")
-            print("The image file must be passed after all options.")
+            print("File not found")
             exit(1)
 
     #Go to next iteration
