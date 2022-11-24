@@ -1,14 +1,80 @@
+from os.path import isfile
 from PIL import Image
 import sys
+import os
 
-#greyscale to ascii index
-#ascii_string = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1[]?-_+~<>i!lI;:,^`'. "
+#Set number parameters
+args = len(sys.argv) 
+
+#Default parameters
+size = 150
 ascii_string = " .:-=+*#%@"
-#ascii_string = "@%#*+=-:. "
+
+#Check parameters
+ready = False
+i=1
+while i < args:
+
+    # --width or -w
+    if sys.argv[i] == "-w" or sys.argv[i] == "--width":
+        if (i + 1 < args) and int(sys.argv[i + 1]) > 0:
+            size = int(sys.argv[i + 1])
+            i += 1
+        else:
+            #print(sys.argv[i])
+            print("Value for --width not specified correctly")
+            print("Invalid sytax, -w needs a positive integer")
+            exit(1)
+
+    # --set or -s
+    elif sys.argv[i] == "-s" or sys.argv[i] == "--set":
+        if i + 1 < args:
+            if sys.argv[i + 1] == "invert":
+                ascii_string = "@%#*+=-:. "
+            elif sys.argv[i + 1] == "extended":
+                ascii_string = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1[]?-_+~<>i!lI;:,^`'. "
+            else:
+                ascii_string = sys.argv[i + 1]
+            i += 1
+        else:
+            print("Value for --set not specified correctly.")
+            exit(1)
+
+    #CHECK FOR THE LAST ARG
+    elif i != args - 1:
+
+        # HELP
+        if sys.argv[i] == "--help" or sys.argv[i] == "-h":
+            print("HELP MENU")
+
+        # CHECK IMAGE
+        elif os.path.isfile(sys.argv[i]) == True:
+            ready = True
+            break
+        else:
+            print("Invalid syntax for passing arguments.")
+            print("The image file must be passed after all options.")
+            exit(1)
+
+    #Go to next iteration
+    else:
+        print("Invalid syntax for passing arguments.")
+        print("Please try using karla ascii --help")
+        exit(1)
+
+    #Increment loop iteration
+    i += 1
+
+#Ensure all arguments are passed properly and image is given
+if ready == False:
+    print("File not found")
+    exit(1)
+
+#Unpack string into 
 index = [*ascii_string]
 
 #fetch image and downsize
-img = Image.open(sys.argv[1])
+img = Image.open(sys.argv[i])
 width , height = img.size
 ratio = height / width
 
@@ -16,7 +82,7 @@ ratio = height / width
 img = img.convert('L')
 
 #Scale image to required size
-img = img.resize((150, round(150*ratio*0.5)))
+img = img.resize((size, round(size*ratio*0.5)))
 width , height = img.size #Update the new size
 
 #initialise new dataset
