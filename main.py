@@ -10,6 +10,7 @@ args = len(sys.argv)
 #Default parameters
 size = 150
 ascii_string = " .:-=+*#%@"
+filename = "__na__"
 
 #Check parameters
 ready = False
@@ -30,7 +31,7 @@ while i < args:
             exit(1)
 
     # --set or -s
-    elif sys.argv[i] == "-s" or sys.argv[i] == "--set":
+    elif sys.argv[i] == "-a" or sys.argv[i] == "--ascii":
         if i + 1 < args:
             if sys.argv[i + 1] == "invert":
                 ascii_string = "@%#*+=-:. "
@@ -42,6 +43,16 @@ while i < args:
         else:
             print("Value for --set not specified correctly.")
             exit(1)
+
+    # -s or --save
+    elif sys.argv[i] == '-s' or sys.argv[i] == "--save":
+        if i + 1 < args:
+            filename = sys.argv[i + 1]
+            i += 1
+        else:
+            print("Value for --save not specified correctly.")
+            exit(1)
+        
 
     #CHECK FOR THE LAST ARG
     elif i == args - 1:
@@ -107,7 +118,12 @@ for item in data:
         count = 0
 
 #Print each pixel as an ascii character
-for x in ascii:
-    print(f'{x}', end="")
+if filename == "__na__":
+    for x in ascii:
+        print(f'{x}', end="")
+else:
+    with open(filename, 'w+') as f:
+        for x in ascii:
+            print(f'{x}', end="", file=f)
 
     
