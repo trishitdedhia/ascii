@@ -1,5 +1,4 @@
 from PIL import Image
-import math
 import sys
 
 #greyscale to ascii index
@@ -9,7 +8,7 @@ ascii_string = " .:-=+*#%@"
 index = [*ascii_string]
 
 #fetch image and downsize
-img = Image.open(sys.argv[2])
+img = Image.open(sys.argv[1])
 width , height = img.size
 ratio = height / width
 
