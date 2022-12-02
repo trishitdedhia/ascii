@@ -4,12 +4,12 @@ Convert images into ascii text art
 ### Using Karla
 Installation: Teach karla to convert images into ascii text.
 ```
-$ karla learn ascii
+karla learn ascii
 ```
 
 Usage: Make karla execute this skill.
 ```
-$ karla ascii [options] <image>
+karla ascii [options] <image>
 ```
 
 
