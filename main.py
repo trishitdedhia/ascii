@@ -2,6 +2,7 @@ from os.path import isfile
 from PIL import Image
 import sys
 import os
+from os import system
 
 #Set number parameters
 args = len(sys.argv)
@@ -59,7 +60,12 @@ while i < args:
 
         # HELP
         if sys.argv[i] == "--help" or sys.argv[i] == "-h":
-            print("HELP MENU")
+            system('cat .help')
+            exit(0)
+
+        elif sys.argv[i] == "--version" or sys.argv[i] == "-v":
+            system('head -1 .help')
+            exit(0)
 
         # CHECK IMAGE
         elif os.path.isfile(sys.argv[i]) == True:

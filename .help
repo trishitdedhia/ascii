@@ -1,0 +1,8 @@
+ASCII - Ascii Image Converter - (built by Trishit Dedhia) version 1.0
+
+Part of the image processing libraries used by Karla.
+
+ASCII converts any given image input into ascii text art and outputs it to the terminal by default.
+
+To know more => man ascii
+If no manual for ascii exists, make sure it is up to date using Karla.
