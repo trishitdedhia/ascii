@@ -1,4 +1,4 @@
-# ASCII Image Converter v1.3
+# ASCII Image Converter v1.0.0
 Convert images into ascii text art
 
 ### Using Karla
