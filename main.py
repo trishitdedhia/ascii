@@ -51,9 +51,9 @@ while i < args:
     # -o or --output
     elif sys.argv[i] == '-o' or sys.argv[i] == "--output":
         if i + 1 < args:
+            output_text=True
             filename = sys.argv[i + 1]
             i += 1
-            output_text=True
         else:
             print("Value for --output not specified correctly.")
             exit(1)
@@ -139,7 +139,7 @@ for item in data:
 if filename == "__na__":
     for x in ascii:
         print(f'{x}', end="")
-elif text_output:
+elif output_text:
     with open(filename, 'w+') as f:
         for x in ascii:
             print(f'{x}', end="", file=f)
