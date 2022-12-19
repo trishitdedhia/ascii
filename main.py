@@ -139,7 +139,7 @@ for item in data:
 if filename == "__na__":
     for x in ascii:
         print(f'{x}', end="")
-elif output_text:
+elif text_output:
     with open(filename, 'w+') as f:
         for x in ascii:
             print(f'{x}', end="", file=f)
