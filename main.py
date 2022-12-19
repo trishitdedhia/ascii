@@ -4,6 +4,8 @@ import sys
 import os
 from os import system
 
+from str_to_img import ascii_to_image
+
 #Set number parameters
 args = len(sys.argv)
 #print(f'Total args = {args}')
@@ -12,6 +14,7 @@ args = len(sys.argv)
 size = 150
 ascii_string = " .:-=+*#%@"
 filename = "__na__"
+text_output=False
 
 #Check parameters
 ready = False
@@ -45,13 +48,22 @@ while i < args:
             print("Value for --set not specified correctly.")
             exit(1)
 
-    # -s or --save
-    elif sys.argv[i] == '-s' or sys.argv[i] == "--save":
+    # -o or --output
+    elif sys.argv[i] == '-o' or sys.argv[i] == "--output":
         if i + 1 < args:
+            output_text=True
             filename = sys.argv[i + 1]
             i += 1
         else:
-            print("Value for --save not specified correctly.")
+            print("Value for --output not specified correctly.")
+            exit(1)
+
+    elif sys.argv[i] == '-s' or sys.argv[i] == "--save":
+        if i + 1 < args:
+            filename = sys.argv[i+1]
+            i+=1
+        else:
+            print("Value for --save not specified correctly")
             exit(1)
         
 
@@ -127,9 +139,12 @@ for item in data:
 if filename == "__na__":
     for x in ascii:
         print(f'{x}', end="")
-else:
+elif output_text:
     with open(filename, 'w+') as f:
         for x in ascii:
             print(f'{x}', end="", file=f)
+else:
+    modified_ascii=''.join(ascii).split('\n')
+    ascii_to_image(modified_ascii,filename,padding=1024)
 
     
